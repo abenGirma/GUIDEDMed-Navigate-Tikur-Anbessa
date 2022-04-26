@@ -1,7 +1,7 @@
 //const Telegraf = require('telegraf');
 const { Composer } = require('micro-bot')
 
-//const bot = new Telegraf('5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo');
+//const bot = new Telegraf('');
 const bot = new Composer()
 
 const axios = require('axios');
@@ -24,6 +24,16 @@ const type = `
 *Pharmacy* - 
 *Ward* - 
 `
+/*
+const tlsOptions = {
+    key: fs.readFileSync('server-key.pem'),
+    cert: fs.readFileSync('server-cert.pem')
+}
+
+//Set webhook because InlineQuery isn't working on Heroku
+bot.telegram.setWebhook('https://server.tld:8443/secret-path');
+bot.startWebhook('/secret-path', null, 5000)
+*/
 
 //work on this function to return data[0].data so that it can be reused
 function fetchJSON(){
