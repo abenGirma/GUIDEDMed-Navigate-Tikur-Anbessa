@@ -1,14 +1,44 @@
-//const Telegraf = require('telegraf');
-const { Composer } = require('micro-bot')
+const Telegraf = require('telegraf');
+//const { Composer } = require('micro-bot')
 
 const token = process.env.Token;
-//const bot = new Telegraf(token);
-const bot = new Composer()
+const bot = new Telegraf("5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo");
+//const bot = new Composer()
+
 
 const axios = require('axios');
 const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
+//Webhook section
+const express = require("express")
+//get app inside express
+const app = express()
+const CURRENT_URL = "https://polar-oasis-61648.herokuapp.com/";
+
+let PORT = process.env.PORT || 3000
+
+app.get("/", (req, res) =>{
+    res.send("Our new tab!!");
+})
+
+app.listen(PORT, "0.0.0.0", ()=>{
+    console.log(`Listen in the port ${PORT}`)
+    })
+
+//this unite Express with webHook from Telegraf
+app.use(bot.webhookCallback("/bot"));
+
+//and this will set our webhook for our bot
+bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
+
+//before app.get
+app.get("/", (req, res) => {
+  res.send("Our new tab!!");
+});
+
+
+//End of Webhook sectiton
 
 const answer = `
 =====*Welcome to SDP-Mapping Bot*=====
@@ -28,16 +58,8 @@ const type = `
 *Ward* - 
 `
 
-if(process.env.NODE_ENV === 'production') {
-    bot = new Telegraf(token);
-    bot.setWebHook(process.env.HEROKU_URL + bot.token);
-  }
-  else {
-    bot = new Telegraf(token, { polling: true });
-  }
 
-
-//work on this function to return data[0].data so that it can be reused
+//work on this function to use data[0].data 
 function fetchJSON(){
 fetch(RestAPIurl)
     .then(d => d.json())
@@ -813,5 +835,5 @@ async function Placetype(choice, floor){
 }
 
 
-//bot.launch();
-module.exports = bot
+bot.launch();
+//module.exports = bot
