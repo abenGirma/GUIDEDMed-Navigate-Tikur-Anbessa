@@ -835,5 +835,5 @@ async function Placetype(choice, floor){
 }
 
 
-bot.launch();
+//bot.launch();
 //module.exports = bot
