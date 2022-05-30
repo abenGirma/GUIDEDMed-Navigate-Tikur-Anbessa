@@ -22,7 +22,7 @@ app.get("/", (req, res) =>{
     res.send("Our new tab!!");
 })
 
-app.listen(PORT, "0.0.0.0", ()=>{
+app.listen(PORT, ()=>{
     console.log(`Listen in the port ${PORT}`)
     })
 
