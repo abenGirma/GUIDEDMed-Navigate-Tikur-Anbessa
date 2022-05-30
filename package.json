@@ -13,6 +13,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
     "micro-bot": "^2.5.3",
+    "nodemon": "^2.0.16",
     "telegraf": "3.32"
   }
 }
