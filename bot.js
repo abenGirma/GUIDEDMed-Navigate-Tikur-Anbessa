@@ -200,14 +200,14 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("There are more than 20 results. Only some of the results are displayed.")
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 1st Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
+                                     NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -276,15 +276,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only some of the results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 2nd Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 2nd Floor." + "\n" + 
+                                     NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -353,15 +353,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only some of the results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 3rd Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 3rd Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -428,15 +428,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only some of the results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 4th Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 4th Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -501,15 +501,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only the 10 results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 5th Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 5th Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -574,15 +574,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 7;
-            ctx.reply("There are more than 20 results. Only some of the results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 6th Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 6th Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -647,15 +647,14 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only the 10 results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
-
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 7th Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 7th Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -720,15 +719,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only the 10 results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on 8th Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on 8th Floor." + "\n" + 
+                                    NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
@@ -793,15 +792,15 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
-            ctx.reply("There are more than 20 results. Only the 10 results are displayed.")
+            description.length = 9;
+            ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
-            ctx.reply("Only some of the results are displayed")
+            ctx.reply("Only some results are displayed")
         }
 
-        ctx.telegram.sendMessage(id, "These are list of " + choice +  " on Ground Floor." + "\n" + 
-                                    "There are " + NumOfResults + " results" + "\n"  + "\n" + description, {
+        ctx.telegram.sendMessage(id, "List of " + choice +  " on Ground Floor." + "\n" + 
+                                   NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
