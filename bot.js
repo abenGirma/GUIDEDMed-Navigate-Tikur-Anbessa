@@ -24,20 +24,18 @@ const CURRENT_URL = process.env.HEROKU_URL;
 
 let PORT = process.env.PORT || 3000
 
-app.get("/", (req, res) =>{
-    res.send("Our new tab!!");
-})
-
 app.listen(PORT, ()=>{
     console.log(`Listen in the port ${PORT}`)
     })
 
+//and this will set our webhook for our bot
+bot.telegram.setWebhook(`${CURRENT_URL}/bot${token}`);
 
 //this unite Express with webHook from Telegraf
-app.use(bot.webhookCallback("/bot"));
+app.use(bot.webhookCallback(`/bot${token}`));
+//app.use(bot.webhookCallback(`/bot${token}`));
 
-//and this will set our webhook for our bot
-bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
+
 
 //before app.get
 app.get("/", (req, res) => {
@@ -848,4 +846,12 @@ async function Placetype(choice, floor){
 
 
 //bot.launch();
+/*
+bot.launch({
+    webhook: {
+      domain: 'https://polar-oasis-61648.herokuapp.com/',
+      port: 3000
+    }
+  })
+  */
 //module.exports = bot
