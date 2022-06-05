@@ -50,6 +50,7 @@ app.use(bot.webhookCallback(`/bot${token}`));
 //before app.get
 app.get("/", (req, res) => {
   res.send("Our new tab!!");
+  res.status(404).send('Sorry cant find that')
 });
 
 app.post('/' + bot.token, (req, res) => {
@@ -854,7 +855,7 @@ async function Placetype(choice, floor){
 }
 
 
-bot.launch();
+//bot.launch();
 /*
 bot.launch({
     webhook: {
