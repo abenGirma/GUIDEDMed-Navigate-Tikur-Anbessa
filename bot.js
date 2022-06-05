@@ -6,7 +6,18 @@ require("dotenv").config();
 //const packageInfo = require('./package.json');
 
 const token = process.env.Token;
-const bot = new Telegraf("5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo");
+const options = {
+    webHook: {
+      // Port to which you should bind is assigned to $PORT variable
+      // See: https://devcenter.heroku.com/articles/dynos#local-environment-variables
+      port: process.env.PORT,
+      // you do NOT need to set up certificates since Heroku provides
+      // the SSL certs already (https://<app-name>.herokuapp.com)
+      // Also no need to pass IP because on Heroku you need to bind to 0.0.0.0
+    },
+  };
+//const bot = new Telegraf("5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo");
+const bot = new Telegraf(token, options);
 //const bot = new Composer()
 
 
@@ -22,7 +33,7 @@ const bodyParser = require('body-parser');
 const app = express()
 const CURRENT_URL = process.env.HEROKU_URL;
 
-let PORT = process.env.PORT || 3000
+let PORT = process.env.PORT || 8443
 
 app.listen(PORT, ()=>{
     console.log(`Listen in the port ${PORT}`)
@@ -33,9 +44,6 @@ bot.telegram.setWebhook(`${CURRENT_URL}/bot${token}`);
 
 //this unite Express with webHook from Telegraf
 app.use(bot.webhookCallback(`/bot${token}`));
-//app.use(bot.webhookCallback(`/bot${token}`));
-
-
 
 //before app.get
 app.get("/", (req, res) => {
@@ -850,8 +858,8 @@ async function Placetype(choice, floor){
 bot.launch({
     webhook: {
       domain: 'https://polar-oasis-61648.herokuapp.com/',
-      port: 3000
+      port: PORT
     }
   })
-  */
+*/
 //module.exports = bot
