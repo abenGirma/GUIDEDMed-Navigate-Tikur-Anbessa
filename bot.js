@@ -1,4 +1,5 @@
 const Telegraf = require('telegraf');
+require("dotenv").config();
 //const { Composer } = require('micro-bot')
 
 const token = process.env.Token;
