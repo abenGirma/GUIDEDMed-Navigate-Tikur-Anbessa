@@ -8,7 +8,7 @@ require("dotenv").config();
 //const packageInfo = require('./package.json');
 
 const token = process.env.Token;
-const options = {
+/*const options = {
     webHook: {
       // Port to which you should bind is assigned to $PORT variable
       // See: https://devcenter.heroku.com/articles/dynos#local-environment-variables
@@ -18,8 +18,8 @@ const options = {
       // Also no need to pass IP because on Heroku you need to bind to 0.0.0.0
     },
   };
-
-const bot = new Telegraf(token, options);
+*/
+const bot = new Telegraf(token);
 //const bot = new Composer()
 
 
@@ -855,12 +855,13 @@ async function Placetype(choice, floor){
 }
 
 
+bot.startWebhook('/bot', null, 5000)
 //bot.launch();
 /*
 bot.launch({
     webhook: {
       domain: 'https://polar-oasis-61648.herokuapp.com/',
-      port: PORT
+      port: process.env.PORT,
     }
   })
 */
