@@ -27,7 +27,7 @@ const axios = require('axios');
 const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
-
+/*
 //Webhook section
 const express = require("express")
 const bodyParser = require('body-parser');
@@ -58,7 +58,7 @@ app.post('/' + bot.token, (req, res) => {
 });
 
 //End of Webhook sectiton
-
+*/
 
 
 const answer = `
