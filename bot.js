@@ -1,6 +1,9 @@
 const Telegraf = require('telegraf');
+//const TelegramBot = require('node-telegram-bot-api');
+//const bodyParser = require('body-parser');
 require("dotenv").config();
 //const { Composer } = require('micro-bot')
+//const packageInfo = require('./package.json');
 
 const token = process.env.Token;
 const bot = new Telegraf("5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo");
@@ -11,11 +14,13 @@ const axios = require('axios');
 const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
+
 //Webhook section
 const express = require("express")
+const bodyParser = require('body-parser');
 //get app inside express
 const app = express()
-const CURRENT_URL = "https://polar-oasis-61648.herokuapp.com/";
+const CURRENT_URL = process.env.HEROKU_URL;
 
 let PORT = process.env.PORT || 3000
 
@@ -26,6 +31,7 @@ app.get("/", (req, res) =>{
 app.listen(PORT, ()=>{
     console.log(`Listen in the port ${PORT}`)
     })
+
 
 //this unite Express with webHook from Telegraf
 app.use(bot.webhookCallback("/bot"));
@@ -38,8 +44,14 @@ app.get("/", (req, res) => {
   res.send("Our new tab!!");
 });
 
+app.post('/' + bot.token, (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+});
 
 //End of Webhook sectiton
+
+
 
 const answer = `
 =====*Welcome to SDP-Mapping Bot*=====
