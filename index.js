@@ -1,5 +1,5 @@
-const Telegraf = require('telegraf');
-//const { Composer } = require('micro-bot')
+//const Telegraf = require('telegraf');
+const { Composer } = require('micro-bot')
 
 //const TelegramBot = require('node-telegram-bot-api');
 //const bodyParser = require('body-parser');
@@ -19,15 +19,15 @@ const token = process.env.Token;
     },
   };
 */
-const bot = new Telegraf(token);
-//const bot = new Composer()
+//const bot = new Telegraf(token);
+const bot = new Composer()
 
 
 const axios = require('axios');
 const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
-
+/*
 //Webhook section
 const express = require("express")
 const bodyParser = require('body-parser');
@@ -60,7 +60,7 @@ app.post('/' + bot.token, (req, res) => {
 });
 
 //End of Webhook sectiton
-
+*/
 
 const answer = `
 =====*Welcome to SDP-Mapping Bot*=====
@@ -857,7 +857,7 @@ async function Placetype(choice, floor){
 
 
 //bot.startWebhook('/bot', null, 5000)
-bot.launch();
+//bot.launch();
 /*
 bot.launch({
     webhook: {
@@ -868,4 +868,4 @@ bot.launch({
     }
   })
 */
-//module.exports = bot
+module.exports = bot
