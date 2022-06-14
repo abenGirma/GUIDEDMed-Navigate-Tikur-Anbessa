@@ -7,6 +7,8 @@ const { Composer } = require('micro-bot')
 require("dotenv").config();
 //const packageInfo = require('./package.json');
 
+//HEROKU_URL=https://glacial-woodland-65643.herokuapp.com/
+//AppId = glacial-woodland-65643
 const token = process.env.Token;
 /*const options = {
     webHook: {
