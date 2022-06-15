@@ -141,20 +141,7 @@ bot.on('inline_query', ctx => {
            
             //console.log(filtered);
             console.log(results);
-            //ctx.answerInlineQuery(results, {cache_time: 300});
-            /*ctx.answerInlineQuery({
-                type: 'article',
-                id: 'someID',
-                title: 'someTitle',
-                description: 'someDesc'
-            })
-            */
-            telegraf.answerInlineQuery({
-                type: 'article',
-                id: 'someID',
-                title: 'someTitle',
-                description: 'someDesc'
-            })
+            ctx.answerInlineQuery(results, {cache_time: 300});
             
         })
 
