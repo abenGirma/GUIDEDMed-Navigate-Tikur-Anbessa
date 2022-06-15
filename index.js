@@ -142,7 +142,7 @@ bot.on('inline_query', ctx => {
             //console.log(filtered);
             console.log(results);
             //ctx.answerInlineQuery(results, {cache_time: 300});
-            return answerInlineQuery({
+            ctx.answerInlineQuery({
                 type: 'article',
                 id: 'someID',
                 title: 'someTitle',
