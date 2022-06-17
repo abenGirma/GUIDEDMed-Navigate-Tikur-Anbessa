@@ -7,8 +7,7 @@ const { Composer } = require('micro-bot')
 require("dotenv").config();
 //const packageInfo = require('./package.json');
 
-//HEROKU_URL=https://glacial-woodland-65643.herokuapp.com/
-//AppId = glacial-woodland-65643
+
 const token = process.env.Token;
 /*const options = {
     webHook: {
@@ -113,6 +112,7 @@ bot.start((ctx) => {
 
 bot.on('inline_query', ctx => {
     var query = ctx.inlineQuery.query;  
+    //var id = ctx.chat.id; 
     fetch(RestAPIurl)
         .then(d => d.json())
         .then(d => {
@@ -139,7 +139,7 @@ bot.on('inline_query', ctx => {
                 results.length = 15
             }
            
-            console.log(results[0]);
+            console.log(results);
             ctx.answerInlineQuery(results, {cache_time: 300});
             
         })
