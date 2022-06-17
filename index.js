@@ -110,10 +110,10 @@ bot.start((ctx) => {
 
 })
 
-bot.on('inline_query', ctx => {
+bot.on('inline_query', async ctx => {
     var query = ctx.inlineQuery.query;  
     //var id = ctx.chat.id; 
-    fetch(RestAPIurl)
+    await fetch(RestAPIurl)
         .then(d => d.json())
         .then(d => {
             var result = d[0].data;
