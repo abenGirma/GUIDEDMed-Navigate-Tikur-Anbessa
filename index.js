@@ -158,9 +158,9 @@ bot.action(['Office', 'Payment', 'Laboratory', 'Pharmacy', 'Room'], (ctx) => {
     choice = ctx.match
     console.log(choice)
     floor = "1st floor"
-    bot.telegram.sendChatAction(id, "typing");
 
     ctx.deleteMessage()
+    bot.telegram.sendChatAction(id, "typing");
 
     Placetype(choice, floor)
     .then((result) =>{
