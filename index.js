@@ -158,10 +158,10 @@ bot.action(['Office', 'Payment', 'Laboratory', 'Pharmacy', 'Room'], (ctx) => {
     choice = ctx.match
     console.log(choice)
     floor = "1st floor"
-
+    
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
-    bot.telegram.sendChatAction(id, "typing");
-
+    
     Placetype(choice, floor)
     .then((result) =>{
         var NumOfResults = result.length
@@ -235,7 +235,7 @@ bot.action(['Office2', 'Payment2', 'Laboratory2', 'Pharmacy2', 'Room2'], (ctx) =
 
     console.log(choice)
     floor = "2nd floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
 
     Placetype(choice, floor)
@@ -311,7 +311,7 @@ bot.action(['Office3', 'Payment3', 'Laboratory3', 'Pharmacy3', 'Room3'], (ctx) =
 
     console.log(choice)
     floor = "3rd floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -386,7 +386,7 @@ bot.action(['Office4', 'ward4', 'Pharmacy4', 'Room4'], (ctx) => {
 
     console.log(choice)
     floor = "4th floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -459,7 +459,7 @@ bot.action(['Office5', 'ward5', 'Room5'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "5th floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -532,7 +532,7 @@ bot.action(['Office6', 'ward6', 'Room6'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "6th floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -605,7 +605,7 @@ bot.action(['Office7', 'ward7', 'Room7'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "7th floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -677,7 +677,7 @@ bot.action(['Office8', 'ward8', 'Room8'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "8th floor"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -750,7 +750,7 @@ bot.action(['OfficeG', 'Hall', 'RoomG'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "Ground"
-    bot.telegram.sendChatAction(id, "typing");
+    //bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
