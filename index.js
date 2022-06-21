@@ -9,17 +9,7 @@ require("dotenv").config();
 
 
 const token = process.env.Token;
-/*const options = {
-    webHook: {
-      // Port to which you should bind is assigned to $PORT variable
-      // See: https://devcenter.heroku.com/articles/dynos#local-environment-variables
-      port: process.env.PORT,
-      // you do NOT need to set up certificates since Heroku provides
-      // the SSL certs already (https://<app-name>.herokuapp.com)
-      // Also no need to pass IP because on Heroku you need to bind to 0.0.0.0
-    },
-  };
-*/
+
 //const bot = new Telegraf(token);
 const bot = new Composer()
 
@@ -28,40 +18,6 @@ const axios = require('axios');
 const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
-/*
-//Webhook section
-const express = require("express")
-const bodyParser = require('body-parser');
-//get app inside express
-const app = express()
-const CURRENT_URL = process.env.HEROKU_URL;
-
-let PORT = process.env.PORT || 3000
-
-app.listen(PORT, ()=>{
-    console.log(`Listen in the port ${PORT}`)
-    })
-
-//this unite Express with webHook from Telegraf
-//app.use(bot.webhookCallback(`/bot${token}`));
-app.use(bot.webhookCallback(`/bot`));
-//and this will set our webhook for our bot
-//bot.telegram.setWebhook(`${CURRENT_URL}/bot${token}`);
-bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
-
-//before app.get
-app.get("/", (req, res) => {
-  res.send("Our new tab!!");
-  console.log(req);
-});
-
-app.post('/' + bot.token, (req, res) => {
-    bot.processUpdate(req.body);
-    res.sendStatus(200);
-});
-
-//End of Webhook sectiton
-*/
 
 const answer = `
 =====*Welcome to SDP-Mapping Bot*=====
@@ -112,13 +68,13 @@ bot.start((ctx) => {
 
 bot.on('inline_query', async ctx => {
     var query = ctx.inlineQuery.query;  
-    //var id = ctx.chat.id; 
+    
     await fetch(RestAPIurl)
         .then(d => d.json())
         .then(d => {
             var result = d[0].data;
             var filtered = result.filter(item => item.Place.toString().toLowerCase().includes(query) == true);
-
+            
             var results = filtered.map((elem, index) => (
                 {
                 type:'article', 
@@ -143,7 +99,7 @@ bot.on('inline_query', async ctx => {
             ctx.answerInlineQuery(results, {cache_time: 300});
             
         })
-
+    
     console.log(query);
 })
 
@@ -202,9 +158,9 @@ bot.action(['Office', 'Payment', 'Laboratory', 'Pharmacy', 'Room'], (ctx) => {
     choice = ctx.match
     console.log(choice)
     floor = "1st floor"
+    bot.telegram.sendChatAction(id, "typing");
 
     ctx.deleteMessage()
-    
 
     Placetype(choice, floor)
     .then((result) =>{
@@ -220,6 +176,7 @@ _Procedure Done:_ ${elem.Procedure}
 _Map:_ ${elem.MAP}
                 `
         ));
+
 
         if(description.length > 20){
             description.length = 9;
@@ -278,9 +235,8 @@ bot.action(['Office2', 'Payment2', 'Laboratory2', 'Pharmacy2', 'Room2'], (ctx) =
 
     console.log(choice)
     floor = "2nd floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
-    
 
     Placetype(choice, floor)
     .then((result) =>{
@@ -355,7 +311,7 @@ bot.action(['Office3', 'Payment3', 'Laboratory3', 'Pharmacy3', 'Room3'], (ctx) =
 
     console.log(choice)
     floor = "3rd floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -430,7 +386,7 @@ bot.action(['Office4', 'ward4', 'Pharmacy4', 'Room4'], (ctx) => {
 
     console.log(choice)
     floor = "4th floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -503,7 +459,7 @@ bot.action(['Office5', 'ward5', 'Room5'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "5th floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -576,7 +532,7 @@ bot.action(['Office6', 'ward6', 'Room6'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "6th floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -649,7 +605,7 @@ bot.action(['Office7', 'ward7', 'Room7'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "7th floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -721,7 +677,7 @@ bot.action(['Office8', 'ward8', 'Room8'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "8th floor"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -794,7 +750,7 @@ bot.action(['OfficeG', 'Hall', 'RoomG'], (ctx) => {
     //choice = ctx.match
     console.log(choice)
     floor = "Ground"
-
+    bot.telegram.sendChatAction(id, "typing");
     ctx.deleteMessage()
     
 
@@ -859,14 +815,41 @@ async function Placetype(choice, floor){
 
 //bot.startWebhook('/bot', null, 5000)
 //bot.launch();
-/*
-bot.launch({
-    webhook: {
-      domain: 'https://polar-oasis-61648.herokuapp.com/',
-      port: process.env.PORT,
-      hookPath: https://polar-oasis-61648.herokuapp.com/5132220675:AAH5IB9njzIw70LeKoSM-229kNMhYQOHQzo
-      tlsOptions: null,
-    }
-  })
-*/
 module.exports = bot
+
+
+
+/*
+//Webhook section
+const express = require("express")
+const bodyParser = require('body-parser');
+//get app inside express
+const app = express()
+const CURRENT_URL = process.env.HEROKU_URL;
+
+let PORT = process.env.PORT || 3000
+
+app.listen(PORT, ()=>{
+    console.log(`Listen in the port ${PORT}`)
+    })
+
+//this unite Express with webHook from Telegraf
+//app.use(bot.webhookCallback(`/bot${token}`));
+app.use(bot.webhookCallback(`/bot`));
+//and this will set our webhook for our bot
+//bot.telegram.setWebhook(`${CURRENT_URL}/bot${token}`);
+bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
+
+//before app.get
+app.get("/", (req, res) => {
+  res.send("Our new tab!!");
+  console.log(req);
+});
+
+app.post('/' + bot.token, (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+});
+
+//End of Webhook sectiton
+*/
