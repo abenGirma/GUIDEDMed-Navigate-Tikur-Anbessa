@@ -93,7 +93,22 @@ bot.on('inline_query', async ctx => {
 
             if (results.length > 20){
                 results.length = 15
-            }
+            } /*else if (results.length = 0){
+                ctx.reply(ctx.chat.id, "Place not found.")
+                console.log(results)
+                
+                ctx.answerInlineQuery([{
+                    type:'article', 
+                    id: 1,
+                    title: "Result not Found", 
+                    description: "The place is not found.",
+                    message_text:   "You can: " + "\n" + 
+                                    "1. Search again bc maybe there is a connection error." + "\n" + 
+                                    "2. Leave a feedback so that it can be added for the future." + "\n" + 
+                                    "3. Look for the place by floor." + "\n"  
+                    }]);
+                
+            }*/ 
            
             console.log(results);
             ctx.answerInlineQuery(results, {cache_time: 300});
@@ -180,6 +195,8 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
+            var first5Res = description.slice(0,5);
+            var second5Res = description.slice(5,9);
             ctx.reply("More than 20 results found. Only some results are displayed.")
         }else if(description.length > 10){
             description.length = 5;
@@ -187,20 +204,31 @@ _Map:_ ${elem.MAP}
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
-                                     NumOfResults + " results" + "\n"  + "\n" + description, {
+                                     NumOfResults + " results" + "\n"  + "\n" + first5Res, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
                     [{text: "Back to MainMenu", callback_data: "Main"}],
-                    [{text: "Back to Floor List", callback_data: "Floor list"}]
+                    [{text: "Back to Floor List", callback_data: "Floor list"}],
+                    [{text: "Next Results", callback_data: "Next"}]
                 ]
             }
         });
-
+        console.log(ctx.update.callback_query.data)
+        console.log(ctx)
     })
 })
 
+//Telegraf.action("Next", "Next page will be displayed.")
+/*
+bot.action('Next', (ctx) => {
+    var id = ctx.chat.id; 
+    ctx.deleteMessage()
+    ctx.telegram.sendMessage(id, "Next page will be displayed.");
+    console.log(ctx.update.callback_query.data)
 
+})
+*/
 //Second floor results based on place choosen
 bot.action('2nd floor', (ctx) => {
     var id = ctx.chat.id; 
