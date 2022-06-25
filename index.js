@@ -79,7 +79,6 @@ bot.on('inline_query', async ctx => {
                 description: elem.Floor,
                 parse_mode: "markdown",
                 message_text:   `
-                
                         *${elem.Place}* 
                         _${elem.Floor}_    
 
