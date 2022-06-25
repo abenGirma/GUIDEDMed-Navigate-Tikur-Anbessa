@@ -1,5 +1,5 @@
-const Telegraf = require('telegraf');
-//const { Composer } = require('micro-bot')
+//const Telegraf = require('telegraf');
+const { Composer } = require('micro-bot')
 
 //const TelegramBot = require('node-telegram-bot-api');
 //const bodyParser = require('body-parser');
@@ -10,8 +10,8 @@ require("dotenv").config();
 
 const token = process.env.Token;
 
-const bot = new Telegraf(token);
-//const bot = new Composer()
+//const bot = new Telegraf(token);
+const bot = new Composer()
 
 
 const axios = require('axios');
@@ -864,8 +864,8 @@ async function Placetype(choice, floor){
 
 
 //bot.startWebhook('/bot', null, 5000)
-bot.launch();
-//module.exports = bot
+//bot.launch();
+module.exports = bot
 
 
 
