@@ -1,5 +1,5 @@
-//const Telegraf = require('telegraf');
-const { Composer } = require('micro-bot')
+const Telegraf = require('telegraf');
+//const { Composer } = require('micro-bot')
 
 //const TelegramBot = require('node-telegram-bot-api');
 //const bodyParser = require('body-parser');
@@ -10,8 +10,8 @@ require("dotenv").config();
 
 const token = process.env.Token;
 
-//const bot = new Telegraf(token);
-const bot = new Composer()
+const bot = new Telegraf(token);
+//const bot = new Composer()
 
 
 const axios = require('axios');
@@ -19,22 +19,22 @@ const fetch = require("node-fetch");
 const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJCT-soTeHFjowWwWeY9nrEeukLMvgq7FA/exec"
 
 
+//<img src="index.png"/>
+//![TASH](./Telegram Bot/Node/index.png)
 const answer = `
-=====*Welcome to SDP-Mapping Bot*=====
-_Search_ - To search for a place by name or number.
-_Choose Floor_ - Choose from the floors listed.
+=====*Welcome to SDP-Mapping Bot*======
+🔎*Search* - To search for a place by name or number
+🏢*Choose Floor* - To see places on each floor
+☰ *Menu* - To see list of commands in the bot
+
 /start - To start the bot
-/help - Shows lists of commands used in the bot
 `;
 
 const type = `
-=====*Type of Place*=====
-*Office* - 
-*Payment* -
-*Room* - 
-*Laboratory* - 
-*Pharmacy* - 
-*Ward* - 
+=======*Places*=======
+🗃️*Office*          🔬*Laboratory*
+💵*Payment*        💊*Pharmacy* 
+🏢*Rooms*           🏥*Ward* 
 `
 
 
@@ -47,10 +47,6 @@ fetch(RestAPIurl)
     })
 }
 
-
-bot.help((ctx) => {
-    ctx.reply(answer);
-})
 
 bot.start((ctx) => {
     var id = ctx.chat.id; 
@@ -81,15 +77,24 @@ bot.on('inline_query', async ctx => {
                 id: String(index),
                 title: elem.Place, 
                 description: elem.Floor,
-                message_text:   "Place: " + String(elem.Place) + "\n" + 
-                                "Type: " + String(elem.Type) + "\n" + 
-                                "Worktime: " + String(elem.Worktime) + "\n" + 
-                                "Floor: " + String(elem.Floor) + "\n" + 
-                                "Map: " + String(elem.MAP) + "\n" + 
-                                "Direction: " + String(elem.Direction) + "\n" +
-                                "ProcedureDone:" + String(elem.Procedure) + "\n"  
+                parse_mode: "markdown",
+                message_text:   `
+                
+                        *${elem.Place}* 
+                        _${elem.Floor}_    
+
+*Worktime:* 
+    ${elem.Worktime}
+*Direction:*
+    ${elem.Direction}
+*Procedure Done:* 
+    ${elem.Procedure}
+*Map:*
+    ${elem.MAP}
+                        ` 
                 })
             );
+
 
             if (results.length > 20){
                 results.length = 15
@@ -192,25 +197,25 @@ _Map:_ ${elem.MAP}
                 `
         ));
 
-
+        /*    
         if(description.length > 20){
             description.length = 9;
-            var first5Res = description.slice(0,5);
-            var second5Res = description.slice(5,9);
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
+        */
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
-                                     NumOfResults + " results" + "\n"  + "\n" + first5Res, {
+                                     NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
             reply_markup: {
                 inline_keyboard: [
                     [{text: "Back to MainMenu", callback_data: "Main"}],
-                    [{text: "Back to Floor List", callback_data: "Floor list"}],
-                    [{text: "Next Results", callback_data: "Next"}]
+                    [{text: "Back to Floor List", callback_data: "Floor list"}]
                 ]
             }
         });
@@ -284,10 +289,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 2nd Floor." + "\n" + 
@@ -361,10 +368,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 3rd Floor." + "\n" + 
@@ -436,10 +445,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 4th Floor." + "\n" + 
@@ -509,10 +520,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 5th Floor." + "\n" + 
@@ -582,10 +595,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 6th Floor." + "\n" + 
@@ -655,11 +670,14 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
+        
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 7th Floor." + "\n" + 
                                     NumOfResults + " results" + "\n"  + "\n" + description, {
             parse_mode: "markdown",
@@ -727,10 +745,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 8th Floor." + "\n" + 
@@ -800,10 +820,12 @@ _Map:_ ${elem.MAP}
 
         if(description.length > 20){
             description.length = 9;
-            ctx.reply("More than 20 results found. Only some results are displayed.")
+            //var first5Res = description.slice(0,5);
+            //var second5Res = description.slice(5,9);
+            var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 5;
-            ctx.reply("Only some results are displayed")
+            description.length = 9;
+            var result10 = "Only some results are displayed";
         }
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on Ground Floor." + "\n" + 
@@ -842,8 +864,8 @@ async function Placetype(choice, floor){
 
 
 //bot.startWebhook('/bot', null, 5000)
-//bot.launch();
-module.exports = bot
+bot.launch();
+//module.exports = bot
 
 
 
