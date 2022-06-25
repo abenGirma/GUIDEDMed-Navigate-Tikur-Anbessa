@@ -79,15 +79,15 @@ bot.on('inline_query', async ctx => {
                 description: elem.Floor,
                 parse_mode: "markdown",
                 message_text:   `
-                📌*${elem.Place}* on _${elem.Floor}_    
+                📌__*${elem.Place}* on ${elem.Floor}__    
 
-🗓️*Worktime:* 
+🗓️ *Worktime:* 
     ${elem.Worktime}
-🧭*Direction:*
+🧭 *Direction:*
     ${elem.Direction}
-💉*Procedure Done:* 
+💉 *Procedure Done:* 
     ${elem.Procedure}
-🗺️*Map:*
+🗺️ *Map:*
     ${elem.MAP}
                         ` 
                 })
