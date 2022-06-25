@@ -197,9 +197,9 @@ _Map:_ ${elem.MAP}
                 `
         ));
 
-        /*    
+           
         if(description.length > 20){
-            description.length = 9;
+            description.length = 10;
             //var first5Res = description.slice(0,5);
             //var second5Res = description.slice(5,9);
             var result20 = "More than 20 results found. Only some results are displayed.";
@@ -207,7 +207,7 @@ _Map:_ ${elem.MAP}
             description.length = 9;
             var result10 = "Only some results are displayed";
         }
-        */
+    
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
                                      NumOfResults + " results" + "\n"  + "\n" + description, {
@@ -288,7 +288,7 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 9;
+            description.length = 10;
             //var first5Res = description.slice(0,5);
             //var second5Res = description.slice(5,9);
             var result20 = "More than 20 results found. Only some results are displayed.";
