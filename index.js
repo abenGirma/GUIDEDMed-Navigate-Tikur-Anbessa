@@ -1,5 +1,5 @@
-//const Telegraf = require('telegraf');
-const { Composer } = require('micro-bot')
+const Telegraf = require('telegraf');
+//const { Composer } = require('micro-bot')
 
 //const TelegramBot = require('node-telegram-bot-api');
 //const bodyParser = require('body-parser');
@@ -10,8 +10,8 @@ require("dotenv").config();
 
 const token = process.env.Token;
 
-//const bot = new Telegraf(token);
-const bot = new Composer()
+const bot = new Telegraf(token);
+//const bot = new Composer()
 
 
 const axios = require('axios');
@@ -96,10 +96,11 @@ bot.on('inline_query', async ctx => {
 
             if (results.length > 20){
                 results.length = 15
-            } /*else if (results.length = 0){
-                ctx.reply(ctx.chat.id, "Place not found.")
+            } else if (results.length = 0){
+                //ctx.reply(ctx.chat.id, "Place not found.")
                 console.log(results)
-                
+                console.log("Place not found")
+                /*
                 ctx.answerInlineQuery([{
                     type:'article', 
                     id: 1,
@@ -110,8 +111,8 @@ bot.on('inline_query', async ctx => {
                                     "2. Leave a feedback so that it can be added for the future." + "\n" + 
                                     "3. Look for the place by floor." + "\n"  
                     }]);
-                
-            }*/ 
+                    */ 
+            }
            
             console.log(results);
             ctx.answerInlineQuery(results, {cache_time: 300});
@@ -862,8 +863,8 @@ async function Placetype(choice, floor){
 
 
 //bot.startWebhook('/bot', null, 5000)
-//bot.launch();
-module.exports = bot
+bot.launch();
+//module.exports = bot
 
 
 
