@@ -199,7 +199,7 @@ _Map:_ ${elem.MAP}
 
            
         if(description.length > 20){
-            description.length = 10;
+            description.length = 9;
             //var first5Res = description.slice(0,5);
             //var second5Res = description.slice(5,9);
             var result20 = "More than 20 results found. Only some results are displayed.";
@@ -288,7 +288,7 @@ _Map:_ ${elem.MAP}
         ));
 
         if(description.length > 20){
-            description.length = 10;
+            description.length = 9;
             //var first5Res = description.slice(0,5);
             //var second5Res = description.slice(5,9);
             var result20 = "More than 20 results found. Only some results are displayed.";
