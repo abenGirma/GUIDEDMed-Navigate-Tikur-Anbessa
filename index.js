@@ -19,10 +19,8 @@ const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJC
 //![TASH](./Telegram Bot/Node/index.png)
 const answer = `
 =====*Welcome to SDP-Mapping Bot*======
-🔎*Search* - Click on this button and write the place name or number where 
-                it says _"Enter Place"_
-🏢*Choose Floor* - Click on this button and choose from the floors listed 
-                    to see places on the selected floor
+🔎*Search* - Click this button and then write the place name/number where it says _"Enter Place"_
+🏢*Choose Floor* - Click this button and then choose from the floors listed to see places on the selected floor
 ☰ *Menu* - To see list of commands in the bot
 
 /start - To start the bot
