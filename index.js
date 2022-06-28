@@ -1,12 +1,8 @@
 //const Telegraf = require('telegraf');
 const { Composer } = require('micro-bot')
 
-//const TelegramBot = require('node-telegram-bot-api');
-//const bodyParser = require('body-parser');
-//"start": "nodemon bot.js"
-require("dotenv").config();
-//const packageInfo = require('./package.json');
 
+require("dotenv").config();
 
 const token = process.env.Token;
 
@@ -195,17 +191,16 @@ _Map:_ ${elem.MAP}
                 `
         ));
 
-           
+        
         if(description.length > 20){
-            description.length = 9;
+            description.length = 8;
             //var first5Res = description.slice(0,5);
             //var second5Res = description.slice(5,9);
             var result20 = "More than 20 results found. Only some results are displayed.";
         }else if(description.length > 10){
-            description.length = 9;
+            description.length = 8;
             var result10 = "Only some results are displayed";
         }
-    
 
         ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
                                      NumOfResults + " results" + "\n"  + "\n" + description, {
@@ -217,8 +212,9 @@ _Map:_ ${elem.MAP}
                 ]
             }
         });
-        console.log(ctx.update.callback_query.data)
-        console.log(ctx)
+        
+        //console.log(ctx.update.callback_query.data)
+        //console.log(ctx)
     })
 })
 
@@ -227,11 +223,30 @@ _Map:_ ${elem.MAP}
 bot.action('Next', (ctx) => {
     var id = ctx.chat.id; 
     ctx.deleteMessage()
-    ctx.telegram.sendMessage(id, "Next page will be displayed.");
-    console.log(ctx.update.callback_query.data)
 
-})
+    var l = description.length;
+        for(i=0, i<l, i+5){
+            var Page = description.slice(i,i+5);
+
+            ctx.telegram.sendMessage(id, "List of " + choice +  " on 1st Floor." + "\n" + 
+                                     NumOfResults + " results" + "\n"  + "\n" + Page, {
+            parse_mode: "markdown",
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: "Back to MainMenu", callback_data: "Main"}],
+                    [{text: "Back to Floor List", callback_data: "Floor list"}]
+                ]
+            }
+        });
+
+        };
+    
+    ctx.telegram.sendMessage(id, "Next page will be displayed.");
+    console.log(ctx.update.callback_query.data);
+});
 */
+
+
 //Second floor results based on place choosen
 bot.action('2nd floor', (ctx) => {
     var id = ctx.chat.id; 
@@ -861,43 +876,5 @@ async function Placetype(choice, floor){
 }
 
 
-//bot.startWebhook('/bot', null, 5000)
 //bot.launch();
 module.exports = bot
-
-
-
-/*
-//Webhook section
-const express = require("express")
-const bodyParser = require('body-parser');
-//get app inside express
-const app = express()
-const CURRENT_URL = process.env.HEROKU_URL;
-
-let PORT = process.env.PORT || 3000
-
-app.listen(PORT, ()=>{
-    console.log(`Listen in the port ${PORT}`)
-    })
-
-//this unite Express with webHook from Telegraf
-//app.use(bot.webhookCallback(`/bot${token}`));
-app.use(bot.webhookCallback(`/bot`));
-//and this will set our webhook for our bot
-//bot.telegram.setWebhook(`${CURRENT_URL}/bot${token}`);
-bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
-
-//before app.get
-app.get("/", (req, res) => {
-  res.send("Our new tab!!");
-  console.log(req);
-});
-
-app.post('/' + bot.token, (req, res) => {
-    bot.processUpdate(req.body);
-    res.sendStatus(200);
-});
-
-//End of Webhook sectiton
-*/
