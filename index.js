@@ -21,12 +21,10 @@ const answer = `
            🗺️*Welcome to SDP-Mapping Bot*🗺️
 
 🔎 *Search* 
-      Enter the place name/number where it says 
-      _"Enter Place"_
+      Enter the place name/number where it says _"Enter Place"_
 
 🏢 *Choose Floor*
-      Click and then choose from the floors listed 
-      to see the places on the selected floor
+      Click and then choose from the floors listed to see the places on the selected floor
 
 ✅ *Feedback*
       If you have any comments or request...
