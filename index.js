@@ -1,13 +1,13 @@
-const Telegraf = require('telegraf');
-//const { Composer } = require('micro-bot')
+//const Telegraf = require('telegraf');
+const { Composer } = require('micro-bot')
 
 
 require("dotenv").config();
 
 const token = process.env.Token;
 
-const bot = new Telegraf(token);
-//const bot = new Composer()
+//const bot = new Telegraf(token);
+const bot = new Composer()
 
 
 const axios = require('axios');
@@ -18,19 +18,32 @@ const RestAPIurl = "https://script.google.com/macros/s/AKfycbxXf4a4dqiT9mAZz4JJC
 //<img src="index.png"/>
 //![TASH](./Telegram Bot/Node/index.png)
 const answer = `
-=====*Welcome to SDP-Mapping Bot*======
-🔎*Search* - Click this button and then write the place name/number where it says _"Enter Place"_
-🏢*Choose Floor* - Click this button and then choose from the floors listed to see places on the selected floor
-☰ *Menu* - To see list of commands in the bot
+           🗺️*Welcome to SDP-Mapping Bot*🗺️
+
+🔎 *Search* 
+      Enter the place name/number where it says 
+      _"Enter Place"_
+
+🏢 *Choose Floor*
+      Click and then choose from the floors listed 
+      to see the places on the selected floor
+
+✅ *Feedback*
+      If you have any comments or request...
+
+☰ *Menu* 
+      Shows list of commands in the bot
 
 /start - To start the bot
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 `;
 
 const type = `
-=======*Places*=======
-🗃️*Office*          🔬*Laboratory*
-💵*Payment*        💊*Pharmacy* 
-🏢*Rooms*           🏥*Ward* 
+🔹🔹🔹🔹🔹*Places*🔹🔹🔹🔹🔹
+
+🗃️ *Office*           🔬 *Laboratory*
+💵 *Payment*       💊 *Pharmacy* 
+🏢 *Rooms*          🏥 *Ward* 
 `
 
 
@@ -50,9 +63,8 @@ bot.start((ctx) => {
         parse_mode: "markdown",
         reply_markup: {
             inline_keyboard: [
-                [{text: "Search", switch_inline_query_current_chat: ""}],
-                [{text: "Choose Floor", callback_data: "Floor list"}],
-                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycby4OAKnMWdZT9dMLsdpsLzBvEL1BLKEKd5tenWXvCsLGAhS6PDM1obahgggRlvcTDrGAw/exec"}}]
+                [{text: "Search", switch_inline_query_current_chat: ""}, {text: "Choose Floor", callback_data: "Floor list"}],
+                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycbwLCYV5X2OxOkvnz4gyrEqnUwiBKB-j5ZYYgm13nPBCypFuAk4o6YtPEUv0rjDkDIaGwg/exec"}}]
             ]
         }
     });
@@ -78,13 +90,16 @@ bot.on('inline_query', async ctx => {
                 message_text:   `
                 📌__*${elem.Place}* on ${elem.Floor}__    
 
-🗓️ *Worktime:* 
+🗓️ *Worktime* 
     ${elem.Worktime}
-🧭 *Direction:*
+
+🧭 *Direction*
     ${elem.Direction}
-💉 *Procedure Done:* 
+
+💉 *Procedure Done* 
     ${elem.Procedure}
-🗺️ *Map:*
+
+🗺️ *Map*
     ${elem.MAP}
                         ` 
                 })
@@ -93,22 +108,7 @@ bot.on('inline_query', async ctx => {
 
             if (results.length > 20){
                 results.length = 15
-            } /*else if (results.length = 0){
-                //ctx.reply(ctx.chat.id, "Place not found.")
-                console.log("Place not found")
-                
-                ctx.answerInlineQuery([{
-                    type:'article', 
-                    id: 1,
-                    title: "Result not Found", 
-                    description: "The place is not found.",
-                    message_text:   "You can: " + "\n" + 
-                                    "1. Search again bc maybe there is a connection error." + "\n" + 
-                                    "2. Leave a feedback so that it can be added for the future." + "\n" + 
-                                    "3. Look for the place by floor." + "\n"  
-                    }]);
-                
-            }*/
+            } 
            
             console.log(results);
             ctx.answerInlineQuery(results, {cache_time: 300});
@@ -143,9 +143,8 @@ bot.action('Main', (ctx) => {
         parse_mode: "markdown",
         reply_markup: {
             inline_keyboard: [
-                [{text: "Search", switch_inline_query_current_chat: ''}],
-                [{text: "Choose Floor", callback_data: "Floor list"}],
-                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycby4OAKnMWdZT9dMLsdpsLzBvEL1BLKEKd5tenWXvCsLGAhS6PDM1obahgggRlvcTDrGAw/exec"}}]
+                [{text: "Search", switch_inline_query_current_chat: ""}, {text: "Choose Floor", callback_data: "Floor list"}],
+                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycbwLCYV5X2OxOkvnz4gyrEqnUwiBKB-j5ZYYgm13nPBCypFuAk4o6YtPEUv0rjDkDIaGwg/exec"}}]
             ]
         }
     });
@@ -186,10 +185,11 @@ bot.action(['Office', 'Payment', 'Laboratory', 'Pharmacy', 'Room'], (ctx) => {
             `
         Result ${index + 1}
 *${elem.Place}*
-_Worktime:_ ${elem.Worktime}
+__Worktime:__ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
                 `
         ));
 
@@ -297,7 +297,8 @@ bot.action(['Office2', 'Payment2', 'Laboratory2', 'Pharmacy2', 'Room2'], (ctx) =
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -376,7 +377,8 @@ bot.action(['Office3', 'Payment3', 'Laboratory3', 'Pharmacy3', 'Room3'], (ctx) =
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -453,7 +455,8 @@ bot.action(['Office4', 'ward4', 'Pharmacy4', 'Room4'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -528,7 +531,8 @@ bot.action(['Office5', 'ward5', 'Room5'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -603,7 +607,8 @@ bot.action(['Office6', 'ward6', 'Room6'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -678,7 +683,8 @@ bot.action(['Office7', 'ward7', 'Room7'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -753,7 +759,8 @@ bot.action(['Office8', 'ward8', 'Room8'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -828,7 +835,8 @@ bot.action(['OfficeG', 'Hall', 'RoomG'], (ctx) => {
 _Worktime:_ ${elem.Worktime}
 _Direction:_ ${elem.Direction}
 _Procedure Done:_ ${elem.Procedure}
-_Map:_ ${elem.MAP}
+_Map:_ 
+    ${elem.MAP}
 
                 `
         ));
@@ -878,5 +886,5 @@ async function Placetype(choice, floor){
 }
 
 
-bot.launch();
-//module.exports = bot
+//bot.launch();
+module.exports = bot
