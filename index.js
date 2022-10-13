@@ -1,13 +1,13 @@
-//const Telegraf = require('telegraf');
-const { Composer } = require('micro-bot')
+const Telegraf = require('telegraf');
+//const { Composer } = require('micro-bot')
 
 
 require("dotenv").config();
 
 const token = process.env.Token;
 
-//const bot = new Telegraf(token);
-const bot = new Composer()
+const bot = new Telegraf(token);
+//const bot = new Composer()
 
 
 const axios = require('axios');
@@ -51,7 +51,8 @@ bot.start((ctx) => {
         reply_markup: {
             inline_keyboard: [
                 [{text: "Search", switch_inline_query_current_chat: ""}],
-                [{text: "Choose Floor", callback_data: "Floor list"}]
+                [{text: "Choose Floor", callback_data: "Floor list"}],
+                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycby4OAKnMWdZT9dMLsdpsLzBvEL1BLKEKd5tenWXvCsLGAhS6PDM1obahgggRlvcTDrGAw/exec"}}]
             ]
         }
     });
@@ -143,7 +144,8 @@ bot.action('Main', (ctx) => {
         reply_markup: {
             inline_keyboard: [
                 [{text: "Search", switch_inline_query_current_chat: ''}],
-                [{text: "Choose Floor", callback_data: "Floor list"}]
+                [{text: "Choose Floor", callback_data: "Floor list"}],
+                [{text: "Feedback", web_app: { url:"https://script.google.com/macros/s/AKfycby4OAKnMWdZT9dMLsdpsLzBvEL1BLKEKd5tenWXvCsLGAhS6PDM1obahgggRlvcTDrGAw/exec"}}]
             ]
         }
     });
@@ -876,5 +878,5 @@ async function Placetype(choice, floor){
 }
 
 
-//bot.launch();
-module.exports = bot
+bot.launch();
+//module.exports = bot
