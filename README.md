@@ -5,17 +5,19 @@ Guided Med is a Telegram bot that provides accurate and up-to-date information a
 
 ✨ Bot Features
 Language Options
-    <img src="src/img/Screenshot_20231104_233008_Telegram.jpg" alt="Language options" width="100"/>
+    <img src="src/img/Screenshot_20231104_233008_Telegram.jpg" alt="Language options" width="400"/>
 
 English Version
-  ![Welcome Message](src/img/Screenshot_20231104_233107_Telegram.jpg)  ![Floors](src/img/Screenshot_20231104_233211_Telegram.jpg)
-  
-  ![Places](src/img/Screenshot_20231104_233226_Telegram.jpg)    ![Results](src/img/Screenshot_20231104_233312_Telegram.jpg)
+  <img src="src/img/Screenshot_20231104_233107_Telegram.jpg" alt="Welcome Message" width="300"/>
+  <img src="src/img/Screenshot_20231104_233211_Telegram.jpg" alt="Floors" width="300"/>
+  <img src="src/img/Screenshot_20231104_233226_Telegram.jpg" alt="Places" width="400"/>
+  <img src="src/img/Screenshot_20231104_233312_Telegram.jpg" alt="Results" width="400"/>
 
 Amharic Version
-  ![Welcome Amharic Message](src/img/Screenshot_20231104_233428_Telegram.jpg)   ![Floors in Amharic](src/img/Screenshot_20231104_233445_Telegram.jpg)
-
-  ![Places in Amharic](src/img/Screenshot_20231104_233500_Telegram.jpg)   ![Results in Amharic](src/img/Screenshot_20231104_233522_Telegram.jpg)
+  <img src="src/img/Screenshot_20231104_233428_Telegram.jpg" alt="Welcome Amharic Message" width="400"/>
+  <img src="src/img/Screenshot_20231104_233445_Telegram.jpg" alt="Floors in Amharic" width="400"/>
+  <img src="src/img/Screenshot_20231104_233500_Telegram.jpg" alt="Places in Amharic" width="400"/>
+  <img src="src/img/Screenshot_20231104_233522_Telegram.jpg" alt="Results in Amharic" width="400"/>
 
 Search Feature
-  ![Search Place](src/img/Screenshot_20231104_233131_Telegram.jpg)
+  <img src="src/img/Screenshot_20231104_233131_Telegram.jpg" alt="Search Place" width="400"/>
