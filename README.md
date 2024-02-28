@@ -5,7 +5,7 @@ Guided Med is a Telegram bot that provides accurate and up-to-date information a
 
 ✨ Bot Features
 Language Options
-  ![Language options](src/img/Screenshot_20231104_233008_Telegram.jpg)  
+    <img src="src/img/Screenshot_20231104_233008_Telegram.jpg" alt="Language options" width="100"/>
 
 English Version
   ![Welcome Message](src/img/Screenshot_20231104_233107_Telegram.jpg)  ![Floors](src/img/Screenshot_20231104_233211_Telegram.jpg)
