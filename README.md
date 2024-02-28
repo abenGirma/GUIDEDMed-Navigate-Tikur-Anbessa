@@ -6,10 +6,12 @@ Guided Med is a Telegram bot that provides accurate and up-to-date information a
 ✨ Bot Features
 
 Language Options
+    <br>
     <img src="src/img/Screenshot_20231104_233008_Telegram.jpg" alt="Language options" width="600"/>
 
 
 English Version
+  <br>
   <img src="src/img/Screenshot_20231104_233107_Telegram.jpg" alt="Welcome Message" width="250"/>
   <img src="src/img/Screenshot_20231104_233211_Telegram.jpg" alt="Floors" width="250"/>
   <img src="src/img/Screenshot_20231104_233226_Telegram.jpg" alt="Places" width="250"/>
@@ -17,6 +19,7 @@ English Version
 
 
 Amharic Version
+  <br>
   <img src="src/img/Screenshot_20231104_233428_Telegram.jpg" alt="Welcome Amharic Message" width="300"/>
   <img src="src/img/Screenshot_20231104_233445_Telegram.jpg" alt="Floors in Amharic" width="300"/>
   <img src="src/img/Screenshot_20231104_233500_Telegram.jpg" alt="Places in Amharic" width="300"/>
@@ -24,4 +27,5 @@ Amharic Version
 
 
 Search Feature
+  <br>
   <img src="src/img/Screenshot_20231104_233131_Telegram.jpg" alt="Search Place" width="200"/>
